@@ -79,6 +79,7 @@ type Agent struct {
 	StrongSwanDir       string
 	PrivateRegistry     string
 	DisableCCM          bool
+	ServerIsPublic      bool
 }
 
 type Control struct {
