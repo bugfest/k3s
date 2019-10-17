@@ -400,6 +400,7 @@ func get(envInfo *cmds.Agent) (*config.Node, error) {
 	nodeConfig.AgentConfig.NodeLabels = envInfo.Labels
 	nodeConfig.AgentConfig.PrivateRegistry = envInfo.PrivateRegistry
 	nodeConfig.AgentConfig.DisableCCM = controlConfig.DisableCCM
+	nodeConfig.AgentConfig.DisableNPC = controlConfig.DisableNPC
 
 	return nodeConfig, nil
 }

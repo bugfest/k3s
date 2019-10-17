@@ -79,6 +79,7 @@ type Agent struct {
 	StrongSwanDir       string
 	PrivateRegistry     string
 	DisableCCM          bool
+	DisableNPC          bool
 	ServerIsPublic      bool
 }
 
@@ -109,6 +110,7 @@ type Control struct {
 	IPSECPSK                 string
 	DefaultLocalStoragePath  string
 	DisableCCM               bool
+	DisableNPC               bool
 
 	Runtime *ControlRuntime `json:"-"`
 }
