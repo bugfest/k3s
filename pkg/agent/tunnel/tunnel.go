@@ -75,11 +75,11 @@ func Setup(ctx context.Context, config *config.Node, onChange func([]string)) er
 	if endpoint != nil {
 		if !config.AgentConfig.ServerIsPublic {
 			addresses = getAddresses(endpoint)
+			if onChange != nil {
+				onChange(addresses)
+			}
 		} else {
 			logrus.Infof("Server is on Public IP: %v", addresses)
-		}
-		if onChange != nil {
-			onChange(addresses)
 		}
 	}
 
@@ -121,11 +121,12 @@ func Setup(ctx context.Context, config *config.Node, onChange func([]string)) er
 						continue watching
 					}
 
-					newAddresses := getAddresses(endpoint)
+					newAddresses := []string{config.ServerAddress}
 
-					if config.AgentConfig.ServerIsPublic {
-						copy(newAddresses, addresses)
-						logrus.Infof("Server is on Public IP, overwriting addresses to: %v", newAddresses)
+					if !config.AgentConfig.ServerIsPublic {
+						newAddresses = getAddresses(endpoint)
+					} else {
+						logrus.Infof("Server is on Public IP, keeping addresses to: %v", newAddresses)
 					}
 
 					if reflect.DeepEqual(newAddresses, addresses) {
