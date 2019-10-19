@@ -26,13 +26,14 @@ type Agent struct {
 	FlannelConf              string
 	Debug                    bool
 	Rootless                 bool
-	ServerURLPublic          bool
+	RootlessAlreadyUnshared  bool
 	AgentShared
 	ExtraKubeletArgs   cli.StringSlice
 	ExtraKubeProxyArgs cli.StringSlice
 	Labels             cli.StringSlice
 	Taints             cli.StringSlice
 	PrivateRegistry    string
+	ServerURLPublic          bool
 }
 
 type AgentShared struct {
