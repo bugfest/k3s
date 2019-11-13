@@ -164,6 +164,7 @@ func NewAgentCommand(action func(ctx *cli.Context) error) cli.Command {
 				Value:       "/var/lib/rancher/k3s",
 			},
 			NodeNameFlag,
+			WithNodeIDFlag,
 			NodeLabels,
 			NodeTaints,
 			DockerFlag,
